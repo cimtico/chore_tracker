@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Chore entries</h1>
+
+<%= month_calendar(events: @chore_entries) do |date, chores| %>
+  <%= date %>
+
+  <% if chores.any? %>
+    <ul>
+      <% chores.each do |chore| %>
+        <li>
+          <%= chore.name %>
+        </li>
+      <% end %>
+    </ul>
+  <% elsif date <= Date.today %>
+    <%= link_to "Add chores", new_chore_entry_path(start_date: date) %>
+  <% end %>
+<% end %>
+
+<%= link_to "New chore entry", new_chore_entry_path %>

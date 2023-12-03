@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+SCRIPT_NAME="${0##*/}"
+SCRIPT_DIR="${0%/*}"
+
+cd "${SCRIPT_DIR}" >/dev/null 2>&1 || exit 1
+
+# shellcheck source=nixlib.sh
+source "./nixlib.sh"
+
+assert_in_nix
+
+# Switch context to the root of the app
+cd ../.. >/dev/null 2>&1 || exit 1
+
+MYSQL_DATA="$(pwd)/vendor/nix/mysql"
+export MYSQL_DATA
+
+echo "Running in $(pwd)"
+
+if [ ! -d "$MYSQL_DATA" ] ; then    
+    mkdir -p "$MYSQL_DATA"
+    echo "Initializing DB in $MYSQL_DATA"
+    mysql_install_db --auth-root-authentication-method=normal \
+    --datadir=$MYSQL_DATA/data \
+    --pid-file=$MYSQL_DATA/mysql.pid
+
+    #echo "Initializing config"
+    #cat >> "$MYSQL_DATA/postgresql.conf" <<-EOF
+    #    listen_addresses = 'localhost'
+    #    unix_socket_directories = '$MYSQL_DATA'
+EOF
+fi
+
+echo "Starting DB"
+exec mysqld --datadir=$MYSQL_DATA/data --pid-file=$MYSQL_DATA/mysql.pid \
+      --socket=$MYSQL_DATA/mysql.sock 2> $MYSQL_DATA/mysql.log
