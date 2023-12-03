@@ -18,7 +18,7 @@ class ChoreEntryViewModel
 
   def chore_entries_attributes=(attr)
     @chore_entries = attr.map do |(id, entry_params)|
-      ChoreEntry.new(({date:, completed: false}).merge(entry_params))
+      ChoreEntry.find_or_initialize_by(chore_id: entry_params[:chore_id], date: entry_params[:date]).tap { _1.completed = entry_params[:completed]}
     end
   end
 

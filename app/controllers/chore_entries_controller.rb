@@ -1,6 +1,5 @@
 class ChoreEntriesController < ApplicationController
-  before_action :chore_entries, only: %i[ index edit ]
-  before_action :set_chore_entry_view_model, only: %i[ new edit create update ]
+  before_action :set_chore_entry_view_model, only: %i[ new  ]
 
   # GET /chore_entries or /chore_entries.json
   def index
@@ -18,6 +17,7 @@ class ChoreEntriesController < ApplicationController
 
   # GET /chore_entries/1/edit
   def edit
+    @chore_entry_view_model = ChoreEntryViewModel.new(chore_entries:, chores:)
   end
 
   # POST /chore_entries or /chore_entries.json
@@ -37,13 +37,15 @@ class ChoreEntriesController < ApplicationController
 
   # PATCH/PUT /chore_entries/1 or /chore_entries/1.json
   def update
+    @chore_entry_view_model = ChoreEntryViewModel.new(({chore_entries:, chores:}).merge(chore_entry_view_model_params))
+
     respond_to do |format|
-      if @chore_entry.update(chore_entry_params)
-        format.html { redirect_to chore_entry_url(@chore_entry), notice: "Chore entry was successfully updated." }
-        format.json { render :show, status: :ok, location: @chore_entry }
+      if @chore_entry_view_model.save
+        format.html { redirect_to chore_entries_url, notice: "Chore entries were successfully created." }
+        format.json { render json: @chore_entry_view_model.chore_entries, status: :created }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @chore_entry.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @chore_entry_view_model.errors, status: :unprocessable_entity }
       end
     end
   end

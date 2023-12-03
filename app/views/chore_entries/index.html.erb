@@ -6,6 +6,7 @@
   <%= date %>
 
   <% if chores.any? %>
+    <%= link_to "Edit chores", edit_chore_entry_path(date, start_date: date) %>
     <ul>
       <% chores.each do |chore| %>
         <li>
