@@ -21,7 +21,14 @@
   <% end %>
 <% end %>
 
-<%= link_to "New chore entry", new_chore_entry_path %>
+<ul>
+  <li>
+    <%= link_to "Today's chores", new_chore_entry_path %>
+  </li>
+  <li>
+    <%= link_to "Manage expenses", expenses_path %>
+  </li>
+</ul>
 
 <style>
 .done { background-color: #90EE90; }
