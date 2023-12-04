@@ -1,6 +1,6 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :heading, "Chore entries" %>
 
-<h1>Chore entries</h1>
+<p style="color: green"><%= notice %></p>
 
 <%= month_calendar(events: @chore_entries) do |date, chores| %>
   <div class="<%= day_color(date, chores) %>">
@@ -8,7 +8,6 @@
   </div>
 
   <% if chores.any? %>
-    <%= link_to "Edit chores", edit_chore_entry_path(date, start_date: date) %>
     <ul>
       <% chores.each do |chore| %>
         <li>
@@ -16,22 +15,11 @@
         </li>
       <% end %>
     </ul>
+    <%= link_to "Edit", edit_chore_entry_path(date, start_date: date), class: "btn btn-secondary" %>
   <% elsif date <= Date.today %>
-    <%= link_to "Add chores", new_chore_entry_path(start_date: date) %>
+    <%= link_to "Add chores", new_chore_entry_path(start_date: date), class: "btn btn-primary" %>
   <% end %>
 <% end %>
-
-<ul>
-  <li>
-    <%= link_to "Dashboard", dashboard_index_path %>
-  </li>
-  <li>
-    <%= link_to "Today's chores", new_chore_entry_path %>
-  </li>
-  <li>
-    <%= link_to "Manage expenses", expenses_path %>
-  </li>
-</ul>
 
 <style>
 .done { background-color: #90EE90; }

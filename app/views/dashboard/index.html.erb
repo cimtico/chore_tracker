@@ -1,16 +1,6 @@
-<h1>Dashboard for <%= @child.name %></h1>
-
-<ul>
-  <li>
-    <%= link_to "Chore Entries", chore_entries_path %>
-  </li>
-  <li>
-    <%= link_to "Manage Expenses", expenses_path %>
-  </li>
-  <li>
-    <%= link_to "Manage Chores", chores_path %>
-  </li>
-</ul>
+<% content_for :heading do %>
+  Dashboard for <%= @child.name %>
+<% end %>
 
 <div>
   <h3>Total</h3>
