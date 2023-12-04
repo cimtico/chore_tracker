@@ -1,4 +1,4 @@
-<h1>Dashboard</h1>
+<h1>Dashboard for <%= @child.name %></h1>
 
 <ul>
   <li>
@@ -14,17 +14,23 @@
   <table>
     <thead>
       <tr>
+        <td>Wallet</td>
         <td>Earned</td>
         <td>Expenses</td>
         <td>Total</td>
       </tr>
     </thead>
     <tbody>
+      <td><%= @child.cutoff_amount %></td>
       <td><%= @total_earned %></td>
       <td><%= @total_expenses %></td>
-      <td><%= @total_earned - @total_expenses %></td>
+      <td><%= @child.cutoff_amount + @total_earned - @total_expenses %></td>
     </tbody>
   </table>
+  <br />
+  <div>
+    <strong>Last cutoff: </strong> <%= @child.last_cutoff_at.to_date %>
+  </div>
 </div>
 
 <div>

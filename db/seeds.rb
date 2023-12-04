@@ -15,3 +15,6 @@ Chore.create(name: "Put dishes in the dishwasher", value: 100)
 Chore.create(name: "Pick up clothes", value: 100)
 Chore.create(name: "Take bella out", value: 100)
 Chore.create(name: "Cleanup home mess (shoes, toys, etc)", value: 100)
+
+
+c = Child.create(name: "Kenzie", last_cutoff_at: "03/12/2023".to_date, cutoff_amount: 7028)
