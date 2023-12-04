@@ -2,14 +2,7 @@
 
 <p style="color: green"><%= notice %></p>
 
-<ul>
-  <li>
-    <%= link_to "New chore", new_chore_path %>
-  </li>
-  <li>
-    <%= link_to "Dashboard", dashboard_index_path %>
-  </li>
-</ul>
+<%= link_to "New chore", new_chore_path, class: "btn btn-primary" %>
 
 <div id="chores">
   <%= paginate @chores %>
@@ -22,11 +15,4 @@
   <%= paginate @chores %>
 </div>
 
-<ul>
-  <li>
-    <%= link_to "New chore", new_chore_path %>
-  </li>
-  <li>
-    <%= link_to "Dashboard", dashboard_index_path %>
-  </li>
-</ul>
+<%= link_to "New chore", new_chore_path, class: "btn btn-primary" %>

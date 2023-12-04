@@ -2,17 +2,8 @@
 
 <p style="color: green"><%= notice %></p>
 
-<ul>
-  <li>
-    <%= link_to "New expense", new_expense_path %>
-  </li>
-  <li>
-    <%= link_to "Dashboard", dashboard_index_path %>
-  </li>
-  <li>
-    <%= link_to "Chore entries", chore_entries_path %>
-  </li>
-</ul>
+
+<%= link_to "New expense", new_expense_path, class: "btn btn-primary" %>
 
 <div id="expenses">
   <%= paginate @expenses %>
@@ -25,14 +16,4 @@
   <%= paginate @expenses %>
 </div>
 
-<ul>
-  <li>
-    <%= link_to "New expense", new_expense_path %>
-  </li>
-  <li>
-    <%= link_to "Dashboard", dashboard_index_path %>
-  </li>
-  <li>
-    <%= link_to "Chore entries", chore_entries_path %>
-  </li>
-</ul>
+<%= link_to "New expense", new_expense_path, class: "btn btn-primary" %>

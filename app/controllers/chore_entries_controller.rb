@@ -78,7 +78,7 @@ class ChoreEntriesController < ApplicationController
 
     def chore_entries
       @chore_entries ||= begin 
-        ChoreEntry.where(date: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+        ChoreEntry.where(date: start_date)
       end
     end
 

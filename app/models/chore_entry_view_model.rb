@@ -13,7 +13,7 @@ class ChoreEntryViewModel
   end
 
   def build_chore_entries
-    Array(chores).map { ChoreEntry.new(chore: _1, date:) }
+    Array(chores).map { ChoreEntry.find_or_initialize_by(chore: _1, date:) }
   end
 
   def chore_entries_attributes=(attr)
