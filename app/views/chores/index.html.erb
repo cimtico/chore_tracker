@@ -2,13 +2,31 @@
 
 <h1>Chores</h1>
 
+<ul>
+  <li>
+    <%= link_to "New chore", new_chore_path %>
+  </li>
+  <li>
+    <%= link_to "Dashboard", dashboard_index_path %>
+  </li>
+</ul>
+
 <div id="chores">
+  <%= paginate @chores %>
   <% @chores.each do |chore| %>
     <%= render chore %>
     <p>
       <%= link_to "Show this chore", chore %>
     </p>
   <% end %>
+  <%= paginate @chores %>
 </div>
 
-<%= link_to "New chore", new_chore_path %>
+<ul>
+  <li>
+    <%= link_to "New chore", new_chore_path %>
+  </li>
+  <li>
+    <%= link_to "Dashboard", dashboard_index_path %>
+  </li>
+</ul>
