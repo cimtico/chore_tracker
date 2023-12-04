@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_035038) do
     t.bigint "chore_id", null: false
     t.datetime "date"
     t.boolean "completed"
+    t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chore_id"], name: "index_chore_entries_on_chore_id"

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
   resources :expenses
   resources :chore_entries
   resources :chores
@@ -9,5 +10,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "chore_entries#index"
+  root "dashboard#index"
 end

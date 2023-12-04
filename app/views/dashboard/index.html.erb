@@ -1,0 +1,46 @@
+<h1>Dashboard</h1>
+
+<ul>
+  <li>
+    <%= link_to "Chore Entries", chore_entries_path %>
+  </li>
+  <li>
+    <%= link_to "Manage Expenses", expenses_path %>
+  </li>
+</ul>
+
+<div>
+  <h3>Total</h3>
+  <table>
+    <thead>
+      <tr>
+        <td>Earned</td>
+        <td>Expenses</td>
+        <td>Total</td>
+      </tr>
+    </thead>
+    <tbody>
+      <td><%= @total_earned %></td>
+      <td><%= @total_expenses %></td>
+      <td><%= @total_earned - @total_expenses %></td>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h3>This week</h3>
+  <table>
+    <thead>
+      <tr>
+        <td>Completed</td>
+        <td>Earned</td>
+        <td>Expenses</td>
+      </tr>
+    </thead>
+    <tbody>
+      <td><%= @week_chore_entries.size %></td>
+      <td><%= @week_chore_entries.sum(:value) %></td>
+      <td><%= @week_expenses %></td>
+    </tbody>
+  </table>
+</div>

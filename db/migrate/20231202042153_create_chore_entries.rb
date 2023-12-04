@@ -4,6 +4,7 @@ class CreateChoreEntries < ActiveRecord::Migration[7.1]
       t.references :chore, null: false, foreign_key: true
       t.datetime :date
       t.boolean :completed
+      t.integer :value
 
       t.timestamps
     end
