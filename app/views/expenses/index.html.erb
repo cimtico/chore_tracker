@@ -2,18 +2,43 @@
 
 <p style="color: green"><%= notice %></p>
 
-
 <%= link_to "New expense", new_expense_path, class: "btn btn-primary" %>
 
-<div id="expenses">
-  <%= paginate @expenses %>
-  <% @expenses.each do |expense| %>
-    <%= render expense %>
-    <p>
-      <%= link_to "Show this expense", expense %>
-    </p>
-  <% end %>
-  <%= paginate @expenses %>
+<div class="row">
+  <div class="col-xl-8 col-lg-7">
+      <div class="card shadow mb-4">
+          <!-- Card Header -->
+          <div
+              class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Expenses</h6>
+          </div>
+          <!-- Card Body -->
+          <div class="card-body">
+            <div class="table-responsive">
+            <%= paginate @expenses %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <td>Name</td>
+                    <td>Amount</td>
+                    <td>Date</td>
+                    <td>Actions</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @expenses.each do |expense| %>
+                    <td><%= expense.name %></td>
+                    <td><%= expense.value %></td>
+                    <td><%= expense.date.to_date %></td>
+                    <td><%= link_to "Show this expense", expense %></td>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= paginate @expenses %>
+            </div>
+          </div>
+      </div>
+  </div>
 </div>
 
 <%= link_to "New expense", new_expense_path, class: "btn btn-primary" %>
