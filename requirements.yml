@@ -1,0 +1,9 @@
+service_name: ChoreTracker
+cpu_limit: 1000m
+memory_limit: 1200Mi
+
+predeploy: bin/predeploy.sh
+
+routes:
+  port: 3000
+  subdomain: chores
